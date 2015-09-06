@@ -336,3 +336,12 @@ thead {
   border-bottom-width: 0;
 }
 /* end of table header */    
+/** override and navbar color */
+.navbar-default {
+    background-color: #1fa67b;
+    border-color: #fff;
+}
+.navbar-default .navbar-nav > li > a,.navbar-default .navbar-brand {
+    color: #fff;
+}
+/** end of override */

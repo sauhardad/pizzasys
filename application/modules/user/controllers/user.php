@@ -97,7 +97,7 @@ class User extends CI_Controller {
  {
    $this->session->unset_userdata('logged_in');
    session_destroy();
-   redirect('home', 'refresh');
+   redirect('landing', 'refresh');
  }
 
 }

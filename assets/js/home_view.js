@@ -1,4 +1,5 @@
 $(function () { 
+    
     //display the menu dropdown on click
     $('.navbar-toggler').on('click', function(event) {
 		event.preventDefault();

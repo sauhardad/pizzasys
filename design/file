@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+body{background-color: #b0c4de;}
+
+a.order:link {color:#800080;text-decoration:none;}
+a.order:visited {color:#800080;text-decoration:none;}
+a.order:hover {text-decoration:underline;}
+
+a.Login:link {color:#800080;text-decoration:none;}
+a.Login:visited {color:#800080;text-decoration:none;}
+a.Login:hover {text-decoration:underline;}
+
+a.Signup:link {color:#800080;text-decoration:none;}
+a.Signup:visited {color:#800080;text-decoration:none;}
+a.Signup:hover {text-decoration:underline;}
+
+a.cancel:link {color:#800080;text-decoration:none;}
+a.cancel:visited {color:#800080;text-decoration:none;}
+a.cancel:hover {text-decoration:underline;}
+
+</style>
+</head>
+<table align = "center" style = "width:50.5%">
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="right">
+    <th> <b><a class="order" href="default.asp" target="_blank">Order|</a></b> <b><a class="Login" href="default.asp" target="_blank">Login|</a></b> <b><a class="Signup" href="default.asp" target="_blank">Sign Up|</a></b><b><a class="cancel" href="default.asp" target="_blank"> Cancel Account</a></b></th>
+    </tr>
+</table>	
+<body>
+	<center><img src="welcome.png" alt="Mountain View" style="width:670px;height:70px;"></center>
+	
+<body background="pizzaBackground.jpg">
+	
+	<script type = "text/javascript">
+		var Image = new Array ("pizza3.jpg","pizza4.jpg","pizza5.jpg","pizza6.jpg","pizza7.jpg","pizza8.jpg");
+		var Image_Number = 0;
+		var Image_Length = Image.length - 1;	
+		function change_image(num)
+		{
+			Image_Number = Image_Number + num;
+			
+			if(Image_Number > Image_Length)
+			{
+				Image_Number = 0;
+			}
+			
+			if(Image_Number < 0)
+			{
+				Image_Number = Image_Length;
+			}
+			
+			document.slideshow.src = Image[Image_Number];
+			return false;
+		}	
+	</script>
+	
+	<center><img src="pizza3.jpg" name = "slideshow" height="400" width="670"></center>
+	
+	<table align = "center">
+		<tr>
+			<td align = "left"><a href = "javascript.html" onclick = "return change_image(-1)" > Prev</a> </td>
+			<td align = "right"><a href = "javascript:change_image(1)"> Next </a> </td>
+		</tr>
+	</table>	
+<table align = "center" style = "width:50.5%">
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="left">
+    <th> <font size="4"face = "Times New Roman" color = "purple"><i>Pizza is a type of bread and tomato dish; often serve with cheese that has existed since time immemorial in Middle Eastern and Mediterranean cuisine. The term 'pizza' first appeared "in a Latin text from the southern Italian town of Gaeta in 997 AD. Here in Pizza System, our customers can order the most delicious pizza in the world. </i></th>
+    </tr>
+	
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th> <b><a class="order" href="default.asp" target="_blank" > <font size = "10">Start Order Here</a></b> </th>
+    </tr>
+	
+    <tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="left">
+    <th> <center><font size="10" face = "Times New Roman" color = "purple"><i>THANK YOU </i></center></th>
+   </tr>
+   
+   <tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="left">
+    <th> <center><font size="5" face = "Times New Roman" color = "purple"><i>Phone Number:845-541-8131 | Location: Nicks Hall 436, ETSU, Johnson City, TN</i></center></th>
+   </tr>
+</table>
+
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<div id = "description">	
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+a.signout:link {color:#800080;text-decoration:none;}
+a.signout:visited {color:#800080;text-decoration:none;}
+a.signout:hover {text-decoration:underline;}
+</style>
+<script>
+function selectMultiple()
+{
+	document.getElementById("mySelect").multiple = true;
+}
+</script>
+</head>
+<table align = "center" style = "width:50.5%">
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="right">
+    <th> <b><a class="signout" href="default.asp" target="_blank"> Sign Out</a></b></th>
+    </tr>
+</table>	
+<body background="pizzaBackground.jpg">
+	<center><img src="welcome.png" alt="Mountain View" style="width:670px;height:70px;"></center>
+	<br>
+	<br>
+	<table align = "center" style = "width:50.5%">
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th> <font size="6"face = "Times New Roman" color = "purple"><i>ORDER PAGE </i></th>
+    </tr>
+	
+	<form action="action_page.php" method = "post">  
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th> <font size="5"face = "Times New Roman" color = "purple"><i>Size:</i>
+	
+	<select required name="Size" >
+    <option value="" >None</option>
+    <option value="size1" >SMALL</option>
+    <option value="size2" >MEDIUM</option>
+	<option value="size3" >LARGE</option>
+	</select>
+    </tr>	
+	
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th> <font size="5"face = "Times New Roman" color = "purple"><i>Crust:</i>
+	
+	<select required name="Crust" >
+    <option value="" >None</option>
+    <option value="crust1" >Hut Favorite</option>
+    <option value="crust2" >Toasted Asiago</option>
+	<option value="crust3" >Honey Sriracha</option>
+	<option value="crust4" >Salted Pretzel</option>
+	<option value="crust5" >Toasted Parmesan</option>
+	<option value="crust6" >Fiery Red Pepper</option>
+	
+	</select>
+    </tr>
+	
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th> <font size="5"face = "Times New Roman" color = "purple"><i>Sauces:</i>
+	
+	<select name="Sauces" required>
+    <option value="" >None</option>
+    <option value="sauce1" >Classic Marinara</option>
+    <option value="sauce2" >Garlic Parmesan</option>
+	<option value="sauce3" >Buffalo </option>
+	<option value="sauce4" >Honey Sriracha </option>
+	<option value="sauce5" >Barbecue</option>
+	
+	</select>
+    </tr>
+	
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th> <font size="5"face = "Times New Roman" color = "purple"><i>Cheeses:</i>
+	<select name="Cheeses" required>
+    <option value="" >None</option>
+    <option value="cheese1" >Mozzarella</option>
+    <option value="cheese2" >Provolone</option>
+	<option value="cheese3" >Cheddar </option>
+	<option value="cheese4" >Parmesan </option>
+	
+	</select>
+    </tr>
+	
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th> <font size="5"face = "Times New Roman" color = "purple"><i>Topping:</i>
+	
+	<select id="mySelect" size="4">
+	<option>Chicken</option>
+	<option>Beef</option>
+	<option>Sausage</option>
+	<option>Mushroom</option>
+	<option>Onion</option>
+	<option>Pine Apple</option>
+	<option>Green Pepper</option>
+	<option>Bacon</option>
+	
+	</select>
+	<input type="button" onclick="selectMultiple()" value="Select multiple">
+	</tr>
+	
+	<tr>
+	<th></th>
+	</tr>
+	<tr bgcolor="#C0C0C0" align="center">
+    <th><input type="submit" value="Proceed"></th>
+    </tr>
+	
+	</form>
+	
+	</table>
+</body>
+</html>

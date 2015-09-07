@@ -1,17 +1,5 @@
-<IfModule mod_rewrite.c>
-	Options +FollowSymLinks
-	RewriteEngine on
-	RewriteRule modules/(.+)/controllers/(.+)\.php$ /index.php/$1/$2 [L,R=301]
-	RewriteRule controllers/(.+)\.php$ /index.php/$1 [L,R=301]
-	
-	RewriteCond %{REQUEST_URI} ^(.*)\.html$
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteRule ^(.*)\.html$ index.php/$1 [L]
-
-	#Send request via index.php (again, not if its a real file or folder)
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule ^(.*)$ index.php/$1 [L]
-</IfModule>
-
-
+RewriteEngine on
+RewriteCond $1 !^(index\.php|resources|robots\.txt)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L,QSA] 

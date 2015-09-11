@@ -40,3 +40,33 @@ INSERT INTO tbl_user(email, password, security_question, security_answer, active
 
 INSERT INTO tbl_order(size, crush, sauce, cheese, topping, order_time) VALUES(
 2,1,3,2,'topping', CURRENT_TIMESTAMP());
+
+
+DROP TABLE IF EXISTS tbl_crust;
+CREATE TABLE tbl_crust
+(
+ id int not null auto_increment primary key,
+ name varchar(255) not null
+);
+
+DROP TABLE IF EXISTS tbl_sauce;
+CREATE TABLE tbl_sauce
+(
+ id int not null auto_increment primary key,
+ name varchar(255) not null
+);
+
+DROP TABLE IF EXISTS tbl_cheese;
+CREATE TABLE tbl_cheese
+(
+ id int not null auto_increment primary key,
+ name varchar(255) not null
+);
+
+DROP TABLE IF EXISTS tbl_toppings;
+CREATE TABLE tbl_toppings
+(
+ id int not null auto_increment primary key,
+ name varchar(255) not null
+);
+

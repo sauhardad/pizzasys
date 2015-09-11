@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 10, 2015 at 11:12 PM
+-- Generation Time: Sep 12, 2015 at 01:09 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -41,7 +41,56 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('f4e511f73087c94edd5da6c3d733b308', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36', 1441919486, 'a:1:{s:9:"user_data";s:0:"";}');
+('57cd8910a27455be6d8ebcf078c1892d', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36', 1442012953, 'a:2:{s:13:"ses_back_jobs";s:19:"order/confirm_order";s:13:"confirm_order";s:48:"http://localhost/pizzasys/order/order_validation";}');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_cheese`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_cheese` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+
+--
+-- Dumping data for table `tbl_cheese`
+--
+
+INSERT INTO `tbl_cheese` (`id`, `name`) VALUES
+(1, 'Mozzarella'),
+(2, 'Provolone'),
+(3, 'Italian Hard Cheeses'),
+(4, 'Smoked Gouda'),
+(5, 'Blue Cheese'),
+(6, 'Cream Cheeses');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_crust`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_crust` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+
+--
+-- Dumping data for table `tbl_crust`
+--
+
+INSERT INTO `tbl_crust` (`id`, `name`) VALUES
+(1, 'Hand-kneaded or slowly-mixed thin crust'),
+(2, 'Golden brown and lightly crispy'),
+(3, 'Thin and crispy'),
+(4, 'Over an inch thick with a spongy texture'),
+(5, 'Hand tossed with love'),
+(6, 'A truely greate crunchy thin crust'),
+(7, 'Brooklyn style type');
 
 -- --------------------------------------------------------
 
@@ -66,6 +115,60 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
 
 INSERT INTO `tbl_order` (`order_id`, `size`, `crush`, `sauce`, `cheese`, `topping`, `order_time`) VALUES
 (1, 2, 1, 3, 2, 'topping', '2015-09-10 21:08:42');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_sauce`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_sauce` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `tbl_sauce`
+--
+
+INSERT INTO `tbl_sauce` (`id`, `name`) VALUES
+(1, 'Eggplant (Aubergine) Sauce'),
+(2, 'Shrimp Sauce'),
+(3, 'Spinach Sauce'),
+(4, 'Tuna Sauce'),
+(5, 'White Sauce'),
+(6, 'Sweet chilli sauce'),
+(7, 'Green sauce'),
+(8, 'Peppercorn sauce'),
+(9, 'Tomato sauce');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_toppings`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_toppings` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+
+--
+-- Dumping data for table `tbl_toppings`
+--
+
+INSERT INTO `tbl_toppings` (`id`, `name`) VALUES
+(1, 'Red Onions'),
+(2, 'Prosciutto'),
+(3, 'Hamburger'),
+(4, 'Anchovies'),
+(5, 'Pepperoni'),
+(6, 'Fried Eggplant'),
+(7, 'Whole Roasted Garlic Cloves'),
+(8, 'Bacon'),
+(9, 'Actual Italian Sausage');
 
 -- --------------------------------------------------------
 
@@ -112,7 +215,7 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
 --
 
 INSERT INTO `tbl_users` (`id`, `email`, `password`, `last_login`, `entry_timestamp`) VALUES
-(1, 'sauhardad@gmail.com', '$2a$08$FqOeZeD0779QpjUFGeglOe9cO5o2GeL21fL4z/i0FmJTDqV4GkN3.', '2015-09-10 17:11:43', '2015-09-10 21:11:43');
+(1, 'sauhardad@gmail.com', '$2a$08$FqOeZeD0779QpjUFGeglOe9cO5o2GeL21fL4z/i0FmJTDqV4GkN3.', '2015-09-11 01:26:44', '2015-09-11 05:26:44');
 
 -- --------------------------------------------------------
 

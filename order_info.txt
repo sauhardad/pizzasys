@@ -1,0 +1,80 @@
+Pizza crust
+1. Hand-kneaded or slowly-mixed thin crust
+2. Golden brown and lightly crispy
+3. Thin and crispy
+4. Over an inch thick with a spongy texture
+5. Hand tossed with love
+6. A truely greate crunchy thin crust
+7. Brooklyn style type
+
+[cf. http://www.webstaurantstore.com/article/101/types-of-pizza.html]
+
+INSERT INTO tbl_crust (name) VALUES ('Hand-kneaded or slowly-mixed thin crust');
+INSERT INTO tbl_crust (name) VALUES ('Golden brown and lightly crispy');
+INSERT INTO tbl_crust (name) VALUES ('Thin and crispy');
+INSERT INTO tbl_crust (name) VALUES ('Over an inch thick with a spongy texture');
+INSERT INTO tbl_crust (name) VALUES ('Hand tossed with love');
+INSERT INTO tbl_crust (name) VALUES ('A truely greate crunchy thin crust');
+INSERT INTO tbl_crust (name) VALUES ('Brooklyn style type');
+
+
+Type of sauce
+1. Eggplant (Aubergine) Sauce
+2. Shrimp Sauce
+3. Spinach Sauce
+4. Tuna Sauce
+5. White Sauce
+6. Sweet chilli sauce
+7. Green sauce
+8. Peppercorn sauce
+9. Tomato sauce
+
+INSERT INTO tbl_sauce (name) VALUES ('Eggplant (Aubergine) Sauce');
+INSERT INTO tbl_sauce (name) VALUES ('Shrimp Sauce');
+INSERT INTO tbl_sauce (name) VALUES ('Spinach Sauce');
+INSERT INTO tbl_sauce (name) VALUES ('Tuna Sauce');
+INSERT INTO tbl_sauce (name) VALUES ('White Sauce');
+INSERT INTO tbl_sauce (name) VALUES ('Sweet chilli sauce');
+INSERT INTO tbl_sauce (name) VALUES ('Green sauce');
+INSERT INTO tbl_sauce (name) VALUES ('Peppercorn sauce');
+INSERT INTO tbl_sauce (name) VALUES ('Tomato sauce');
+
+Type of cheese
+Mozzarella 
+Provolone 
+Italian Hard Cheeses 
+Smoked Gouda 
+Blue Cheese 
+Cream Cheeses 
+[cf. http://www.thehomepizzeria.com/pizza-toppings/cheese-for-pizza/#]
+
+INSERT INTO tbl_cheese (name) VALUES ('Mozzarella');
+INSERT INTO tbl_cheese (name) VALUES ('Provolone');
+INSERT INTO tbl_cheese (name) VALUES ('Italian Hard Cheeses');
+INSERT INTO tbl_cheese (name) VALUES ('Smoked Gouda');
+INSERT INTO tbl_cheese (name) VALUES ('Blue Cheese');
+INSERT INTO tbl_cheese (name) VALUES ('Cream Cheeses');
+
+
+Pizza toppings
+1. Red Onions
+2. Prosciutto
+3. Hamburger
+4. Anchovies
+5. Pepperoni
+6. Fried Eggplant
+7. Whole Roasted Garlic Cloves
+8. Bacon
+9. Actual Italian Sausage
+
+[cf. http://kitchenette.jezebel.com/pizza-toppings-ranked-1685362043]
+
+INSERT INTO tbl_toppings (name) VALUES('Red Onions');
+INSERT INTO tbl_toppings (name) VALUES('Prosciutto');
+INSERT INTO tbl_toppings (name) VALUES('Hamburger');
+INSERT INTO tbl_toppings (name) VALUES('Anchovies');
+INSERT INTO tbl_toppings (name) VALUES('Pepperoni');
+INSERT INTO tbl_toppings (name) VALUES('Fried Eggplant');
+INSERT INTO tbl_toppings (name) VALUES('Whole Roasted Garlic Cloves');
+INSERT INTO tbl_toppings (name) VALUES('Bacon');
+INSERT INTO tbl_toppings (name) VALUES('Actual Italian Sausage');

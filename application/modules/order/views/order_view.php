@@ -18,12 +18,24 @@
                 <tr>
                   <th class="tg-0ord">Size:</th>
                   <th class="tg-031e">
+                   <?php
+                       $options = array(
+                        1 => "Small (4 inches)",
+                        2 => "Medium (6 inches)",
+                        3 => "Large(8 inches)"
+                        );
+                   ?>
                     <select name="size">
                         <option value="none" <?php echo  set_select('size', 'none', TRUE); ?> >----Select size----</option>
-                        <option value="1" <?php echo  set_select('size', '1'); ?> >Small (4 inches)</option>
-                        <option value="2" <?php echo  set_select('size', '2'); ?> >Medium (6 inches)</option>
-                        <option value="3" <?php echo  set_select('size', '3'); ?> >Large(8 inches)</option>
-                        
+                        <?php
+                            $cur_size = $this->session->userdata('data_values')['size_val'];
+                            foreach ($options as $k => $v){
+                                echo "<option value=\"".$k."\" ";
+                                if($k == $cur_size)echo  set_select('size', $k, TRUE);
+                                else echo  set_select('size', $k);
+                                echo ">".$v."</option>";
+                            }
+                        ?>                        
                     </select>
                     <?php echo form_error('size'); ?>
                   </th>
@@ -34,9 +46,11 @@
                     <select name="crust">
                         <option value="none" <?php echo  set_select('crust', 'none', TRUE); ?> >----Select crust----</option>
                         <?php
+                            $cur_crust = $this->session->userdata('data_values')['crust_val'];
                             foreach ($crust->result() as $row){
                                 echo "<option value=\"".$row->id."\" ";
-                                echo  set_select('crust', $row->id);
+                                if($row->id == $cur_crust)echo  set_select('crust', $row->id, TRUE);
+                                else echo  set_select('crust', $row->id);
                                 echo ">".$row->name."</option>";
                             }
                         ?>
@@ -50,9 +64,11 @@
                     <select name="sauce">
                         <option value="none" <?php echo  set_select('sauce', 'none', TRUE); ?> >----Select type of sauce----</option>
                         <?php
+                            $cur_sauce = $this->session->userdata('data_values')['sauce_val'];
                             foreach ($sauce->result() as $row){
                                 echo "<option value=\"".$row->id."\" ";
-                                echo  set_select('sauce', $row->id);
+                                if($row->id == $cur_sauce)echo  set_select('sauce', $row->id, TRUE);
+                                else echo  set_select('sauce', $row->id);
                                 echo ">".$row->name."</option>";
                             }
                         ?>
@@ -66,9 +82,11 @@
                     <select name="cheese">
                         <option value="none" <?php echo  set_select('cheese', 'none', TRUE); ?> >----Select type of cheese----</option>
                         <?php
+                            $cur_cheese = $this->session->userdata('data_values')['cheese_val'];
                             foreach ($cheese->result() as $row){
                                 echo "<option value=\"".$row->id."\" ";
-                                echo  set_select('cheese', $row->id);
+                                if($row->id == $cur_cheese)echo  set_select('cheese', $row->id, TRUE);
+                                else echo  set_select('cheese', $row->id);
                                 echo ">".$row->name."</option>";
                             }
                         ?>
@@ -81,9 +99,18 @@
                   <td class="tg-031e">Select toppings (You can select multiple): <br>
                     <select name="toppings[]" multiple="multiple">
                         <?php
+                            $cur_toppings = $this->session->userdata('data_values')['toppings_arr_val'];
                             foreach ($toppings->result() as $row){
                                 echo "<option value=\"".$row->id."\" ";
-                                echo  set_select('toppings', $row->id);
+                                $flag = FALSE;
+                                foreach($cur_toppings as $val){
+                                    if($val == $row->id){
+                                        $flag = TRUE;
+                                        break;
+                                    }
+                                }
+                                if($flag)echo  set_select('toppings', $row->id, TRUE);
+                                else echo  set_select('toppings', $row->id);
                                 echo ">".$row->name."</option>";
                             }
                         ?>

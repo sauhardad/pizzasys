@@ -44,12 +44,12 @@
                            $val .= $data_values['toppings_arr_val'][$i];
                         }
                     ?>
-                    <label class="label_hide"  id='size_val'><?php echo $val; ?></label>
+                    <label class="label_hide" id='size_val'><?php echo $val; ?></label>
                  </td>
                 </tr>
                 <tr>
                   <td class="tg-0ord"></td>
-                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm')?> <button onclick="edit_order()">Edit Order</button> <?php echo form_submit('submit','Cancel Order')?></td>
+                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm')?> <?php echo form_submit('submit','Edit Order2')?> <button onclick="edit_order()">Edit Order</button> <?php echo form_submit('submit','Cancel Order')?></td>
                        <script>
                           function edit_order() {
                               window.history.back();

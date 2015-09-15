@@ -6,6 +6,7 @@ class Order extends CI_Controller{
         parent::__construct();
         $this->load->model('order_model');
     }
+    
     function load_pizza_data(){
         $pizza_data = array(
             'crust' => $this->order_model->get_crust_data(),
@@ -15,6 +16,7 @@ class Order extends CI_Controller{
         );
         return $pizza_data;
     }
+    
     function index(){
         //$crust_data = $this->order_model->get_crust_data();
         $data = $this->load_pizza_data();
@@ -61,7 +63,7 @@ class Order extends CI_Controller{
         $this->form_validation->set_rules('crust', 'Crust', 'required|callback_crust_validate');
         $this->form_validation->set_rules('sauce', 'Sauce', 'required|callback_sauce_validate');
         $this->form_validation->set_rules('cheese', 'Cheese', 'required|callback_cheese_validate');
-        $this->form_validation->set_rules('toppings', 'Toppings', 'required|callback_toppings_validate');
+        $this->form_validation->set_rules('toppings', 'Toppings', 'callback_toppings_validate');
         
         if($this->form_validation->run() == FALSE)
         {
@@ -69,12 +71,14 @@ class Order extends CI_Controller{
             $this->load->view('order_view', $data);
         }
         else{
+            $this->session->set_userdata('data_values', $data_values);
             $this->load->view('order_confirm_view', $data);
         }
         
     //    foreach ($order["toppings"] as $value)
       //      echo $value;
     }
+    
     function size_validate($size)
     {
         if($size=="none"){
@@ -84,6 +88,7 @@ class Order extends CI_Controller{
             return true;
        }
     }
+    
     function crust_validate($crust)
     {
         if($crust=="none"){
@@ -102,6 +107,7 @@ class Order extends CI_Controller{
             return true;
        }
     }
+    
     function cheese_validate($cheese)
     {
         if($cheese=="none"){
@@ -111,6 +117,7 @@ class Order extends CI_Controller{
             return true;
        }
     }
+    
     function toppings_validate($toppings)
     {
         if($toppings <= 0){
@@ -126,11 +133,14 @@ class Order extends CI_Controller{
     function confirm_order(){
         $op_type =  $this->input->post('submit');
         if($op_type == "Confirm"){
-            
-        }else if($op_type == "Edit Order"){
+            //$data_values = $this->session->userdata('data_values');
+            $this->load->view('payment/payment_view');
+        }else if($op_type == "Edit Order2"){
             $data = $this->load_pizza_data();
+            $data_values = $this->session->userdata('data_values');
             $this->load->view('order_view', $data);
         }else {
+            $this->session->unset_userdata('data_values');
             echo "cancelled!";
         }
     }

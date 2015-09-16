@@ -8,7 +8,6 @@
        
    <script src="<?=base_url()?>assets/js/jquery.min.js"></script>    
    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>    
-   <script src="<?=base_url()?>assets/js/home_view.js"></script>    
  </head>
  <body>
    <section id="login">
@@ -19,9 +18,21 @@
                     <div>
                         <img src="<?php echo base_url(); ?>assets/img/logo.png"/>
                     </div>
-                    <br/>    
-                    <?php echo form_open('user/verifylogin'); ?>
-                      <div class="form-group">
+                    <br/>
+                    <?php echo form_open('user/add_user'); ?>
+                        <div class="form-group">
+                            <label for="name" class="sr-only">Name:</label>
+                            <input type="text" name="name" id="name" class="form-control" placeholder="Name" value="<?php echo set_value('name'); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="address" class="sr-only">Address:</label>
+                            <input type="text" name="address" id="address" class="form-control" placeholder="Address" value="<?php echo set_value('address'); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="contact_no" class="sr-only">Phone Number:</label>
+                            <input type="text" name="contact_no" id="contact_no" class="form-control" placeholder="Phone Number" value="<?php echo set_value('contact_no'); ?>">
+                        </div>
+                        <div class="form-group">
                             <label for="email" class="sr-only">Email:</label>
                             <input type="text" name="email" id="email" class="form-control" placeholder="Email" value="<?php echo set_value('email'); ?>">
                         </div>
@@ -29,13 +40,16 @@
                             <label for="password" class="sr-only">Password:</label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="<?php echo set_value('password'); ?>">
                         </div>
+                        <div class="form-group">
+                            <label for="confirm_password" class="sr-only">Confirm Password:</label>
+                            <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="Confirm Password" value="<?php echo set_value('confirm_password'); ?>">
+                        </div>
                         <?php if(validation_errors() != false) { ?> 
                             <div class="alert alert-danger"> 
                                 <?php echo validation_errors(); ?>
                             </div>
                         <?php } ?>    
-                      <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Log in">
-                          <a href="#forgot_password_modal" data-toggle="modal" class="animate" class="btn forget">Forgot Password</a>
+                      <input type="submit" id="btn-login" class="btn btn-custom btn-lg btn-block" value="Sign up">
                     </form>
                     
                     <hr>
@@ -43,36 +57,6 @@
     		</div> <!-- /.col-xs-12 -->
     	</div> <!-- /.row -->
     </div> <!-- /.container -->
-    
-    <div class="modal fade" id="forgot_password_modal" tabindex="-1" role="dialog" >
-    <div class="modal-dialog">
-        <div class="modal-content modal-content-bg">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                <div class="modal-title">Please enter your email address for password recovery</div>
-            </div>
-             <div class="row" style="padding: 7%;">
-                <div>
-                    <div class="form-login">
-                        <form id="frm_forgot_password" method="post" action="<?=base_url('user/forgot_password')?>">
-                            <h4</h4>
-                            <input type="text" id="recovery_email" name="recovery_email" class="form-control input-lg chat-input" placeholder="Email" />
-                            </br>
-                            <div class="wrapper">
-                                <span class="group-btn">     
-                                    <input type="submit" id="recover_password" class="btn btn-custom btn-md" value="Recover"/>
-                                </span>
-                            </div>
-                        </form>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-    
-    
     </section>
     
     <footer id="footer">

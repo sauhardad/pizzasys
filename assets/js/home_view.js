@@ -7,7 +7,6 @@ $(function () {
 	});
         
     //validate and verify password    
-    // validate signup form on keyup and submit
     $("#frm_change_password").validate({
         rules: {
                 current_password: "required",
@@ -47,6 +46,72 @@ $(function () {
             return false;
         }
     });
+    
+    //validate passwords when user wants to cancel an account
+    $("#frm_cancel_account").validate({
+        rules: {
+                cancel_password1: {
+                        required: true
+                },
+                cancel_password2: {
+                        required: true,
+                        equalTo: "#cancel_password1"
+                }
+        },
+        messages: {
+                cancel_password1: {
+                        required: "Please enter your password"
+                },
+                cancel_password2: {
+                        required: "Please confirm your password",
+                        equalTo: "Please enter the same password as above"
+                }
+        },
+        errorClass: "invalid",
+        submitHandler: function(form) {
+            $(form).ajaxSubmit({
+                clearForm:true,
+                dataType:'json',
+                success: function(data) {
+                    alert(data.message);
+                    if(data.status==true)
+                        window.location=base_url + 'user/logout';
+                }
+            });
+            return false;
+        }
+    });
+    
+    //validate passwords when user wants to cancel an account
+    $("#frm_forgot_password").validate({
+        rules: {
+                recovery_email: {
+                        required: true
+                }
+        },
+        messages: {
+                recovery_email: {
+                        required: "Please enter your email address"
+                }
+        },
+        errorClass: "invalid",
+        submitHandler: function(form) {
+            $(form).ajaxSubmit({
+                clearForm:true,
+                dataType:'json',
+                success: function(data) {
+                    alert(data.message);
+                    if(data.status==true)
+                    {
+                        alert("Email Successfully sent!");
+                        window.location=window.location
+                    }
+                }
+            });
+            return false;
+        }
+    });
+    
     
     //validate the add new user form with custom and built in validation
     $.validator.addMethod("valueNotEquals", function(value, element, arg){

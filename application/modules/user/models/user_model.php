@@ -27,6 +27,11 @@ Class User_model extends CI_Model
    }
  }
  
+ function add_user($data)
+ {
+     return $this->db->insert('tbl_users',$data);
+ }
+ 
  function change_password($email,$new_password)
  {
      $this->db->where('email', $email);
@@ -47,6 +52,16 @@ Class User_model extends CI_Model
      $query = $this -> db -> get('users');
      $result=$query->result();
      return $result;
+ }
+ 
+ /** function that removes user from the database when uer_id is passed
+  * 
+  * @param type $id
+  */
+ function delete($id)
+ {
+     if($this->db->delete('tbl_users',array('id'=>$id))) return TRUE;
+     return FALSE;
  }
 }
 ?>

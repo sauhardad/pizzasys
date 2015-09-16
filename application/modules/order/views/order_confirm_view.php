@@ -14,7 +14,7 @@
    <?php echo form_open('order/confirm_order');?>
    <div id="order_confirm_content" >
         <div id="form_content" >
-            <table class="tg">
+            <table class="table">
                 <tr>
                   <th class="tg-0ord">Size:</th>
                   <th class="tg-031e"> <?php echo $size; ?> <label class="label_hide" id='size_val'><?php echo $data_values['size_val']?></label> </th>
@@ -49,7 +49,7 @@
                 </tr>
                 <tr>
                   <td class="tg-0ord"></td>
-                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm')?> <?php echo form_submit('submit','Edit Order2')?> <button onclick="edit_order()">Edit Order</button> <?php echo form_submit('submit','Cancel Order')?></td>
+                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm','class="btn btn-primary"')?> <?php echo form_submit('submit','Edit Order2')?> <button class="btn btn-custom" onclick="edit_order()">Edit Order</button> <?php echo form_submit('submit','Cancel Order','class="btn btn-danger"')?></td>
                        <script>
                           function edit_order() {
                               window.history.back();

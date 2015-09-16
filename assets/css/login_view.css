@@ -55,7 +55,7 @@
 	margin-bottom: 20px;
 }
 #login .forget {
-    font-size: 13px;
+    font-size: 14px;
 	text-align: center;
 	display: block;
 }
@@ -88,4 +88,10 @@
 }
 #footer a {
     color: inherit;
+}
+
+
+//tweak the bootstrap css
+.carousel-control.right,.carousel-control.left {
+    background-image: none !important; 
 }

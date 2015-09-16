@@ -14,7 +14,7 @@
    <?php echo form_open('order/order_validation');?>
    <div id="order_content" >
         <div id="form_content" >
-            <table class="tg">
+            <table class="table">
                 <tr>
                   <th class="tg-0ord">Size:</th>
                   <th class="tg-031e">
@@ -25,7 +25,7 @@
                         3 => "Large(8 inches)"
                         );
                    ?>
-                    <select name="size">
+                    <select name="size" class="form-control">
                         <option value="none" <?php echo  set_select('size', 'none', TRUE); ?> >----Select size----</option>
                         <?php
                             $cur_size = $this->session->userdata('data_values')['size_val'];
@@ -43,7 +43,7 @@
                 <tr>
                   <td class="tg-0ord">Crust:</td>
                   <td class="tg-031e">
-                    <select name="crust">
+                    <select name="crust" class="form-control">
                         <option value="none" <?php echo  set_select('crust', 'none', TRUE); ?> >----Select crust----</option>
                         <?php
                             $cur_crust = $this->session->userdata('data_values')['crust_val'];
@@ -61,7 +61,7 @@
                 <tr>
                   <td class="tg-0ord">Sauce:</td>
                   <td class="tg-031e">
-                    <select name="sauce">
+                    <select name="sauce" class="form-control">
                         <option value="none" <?php echo  set_select('sauce', 'none', TRUE); ?> >----Select type of sauce----</option>
                         <?php
                             $cur_sauce = $this->session->userdata('data_values')['sauce_val'];
@@ -79,7 +79,7 @@
                 <tr>
                   <td class="tg-0ord">Cheese:</td>
                   <td class="tg-031e">
-                    <select name="cheese">
+                    <select name="cheese" class="form-control">
                         <option value="none" <?php echo  set_select('cheese', 'none', TRUE); ?> >----Select type of cheese----</option>
                         <?php
                             $cur_cheese = $this->session->userdata('data_values')['cheese_val'];
@@ -97,16 +97,19 @@
                 <tr>
                   <td class="tg-0ord"></td>
                   <td class="tg-031e">Select toppings (You can select multiple): <br>
-                    <select name="toppings[]" multiple="multiple">
+                    <select name="toppings[]" multiple="multiple" class="form-control">
                         <?php
                             $cur_toppings = $this->session->userdata('data_values')['toppings_arr_val'];
                             foreach ($toppings->result() as $row){
                                 echo "<option value=\"".$row->id."\" ";
                                 $flag = FALSE;
-                                foreach($cur_toppings as $val){
-                                    if($val == $row->id){
-                                        $flag = TRUE;
-                                        break;
+                                if(isset($cur_toppings))
+                                {
+                                    foreach($cur_toppings as $val){
+                                        if($val == $row->id){
+                                            $flag = TRUE;
+                                            break;
+                                        }
                                     }
                                 }
                                 if($flag)echo  set_select('toppings', $row->id, TRUE);
@@ -120,7 +123,7 @@
                 </tr>
                 <tr>
                   <td class="tg-0ord"></td>
-                  <td class="tg-031e"> <?php echo form_submit('submit','Proceed')?></td>
+                  <td class="tg-031e"> <?php echo form_submit('submit','Proceed','class="btn btn-primary"')?></td>
                 </tr>
             </table>
         </div>

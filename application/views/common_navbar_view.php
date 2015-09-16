@@ -10,10 +10,16 @@
 					<span class="glyphicon glyphicon-cog"></span>
 				</a>
 			</li>
+                        <li>
+				<a href="#cancel_account_modal" data-toggle="modal" class="animate">
+					<span class="desc animate"> Cancel Account </span>
+					<span class="glyphicon glyphicon-remove"></span>
+				</a>
+			</li>
 			<li>
 				<a href="<?php echo base_url('user/logout');?>" class="animate">
 					<span class="desc animate"> Logout </span>
-					<span class="glyphicon glyphicon-log-out"></span>
+					<span class="glyphicon glyphicon-off"></span>
 				</a>
 			</li>
 		</ul>

@@ -49,12 +49,7 @@
                 </tr>
                 <tr>
                   <td class="tg-0ord"></td>
-                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm')?> <?php echo form_submit('submit','Edit Order2')?> <button onclick="edit_order()">Edit Order</button> <?php echo form_submit('submit','Cancel Order')?></td>
-                       <script>
-                          function edit_order() {
-                              window.history.back();
-                          }
-                       </script>
+                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm')?> <?php echo form_submit('submit','Edit Order')?> <?php echo form_submit('submit','Cancel Order')?></td>
                 </tr>
             </table>
         </div>

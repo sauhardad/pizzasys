@@ -11,8 +11,9 @@
  </head>
  <body>
    
-   <?php echo form_open('order/order_validation');?>
+   
    <div id="order_content" >
+        <?php echo form_open('order/order_validation');?>
         <div id="form_content" >
             <table class="tg">
                 <tr>
@@ -103,11 +104,13 @@
                             foreach ($toppings->result() as $row){
                                 echo "<option value=\"".$row->id."\" ";
                                 $flag = FALSE;
-                                foreach($cur_toppings as $val){
-                                    if($val == $row->id){
-                                        $flag = TRUE;
-                                        break;
-                                    }
+                                if(isset($cur_toppings)){
+                                   foreach($cur_toppings as $val){
+                                       if($val == $row->id){
+                                           $flag = TRUE;
+                                           break;
+                                       }
+                                   }
                                 }
                                 if($flag)echo  set_select('toppings', $row->id, TRUE);
                                 else echo  set_select('toppings', $row->id);
@@ -124,8 +127,9 @@
                 </tr>
             </table>
         </div>
+        <?php echo form_close(); ?>
    </div>
-   <?php echo form_close(); ?>
+   
    
  </body>
 </html>

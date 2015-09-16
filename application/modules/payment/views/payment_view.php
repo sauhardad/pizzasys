@@ -7,7 +7,8 @@
        
        
    <script src="<?=base_url()?>assets/js/jquery.min.js"></script>    
-   <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>    
+   <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>
+   <script src="<?=base_url()?>assets/js/plus_minus.js"></script>
  </head>
  <body>
    
@@ -16,9 +17,17 @@
         <div id="form_content" >
             <table class="tg">
                 <tr>
+                  <th class="tg-0ord">Quantity:</th>
+                  <th class="tg-031e">
+                    <input type="text" id="quantity" value="1" size=3 style="text-align: center;" >
+                    <img src="<?php echo base_url('assets/img/plus.png'); ?>" id="plus" class="plus_minus" onclick="plus_clicked()">
+                    <img src="<?php echo base_url('assets/img/minus.png'); ?>" id="minus" class="plus_minus" onclick="minus_clicked()">
+                  </th>
+                </tr>
+                <tr>
                   <th class="tg-0ord">Payment Amount:</th>
                   <th class="tg-031e">
-                    <input type="text" name="payment_amount" value="$20.99" disabled="disabled">
+                    <input type="text" id="payment_amount" value="$7.99" disabled="disabled">
                   </th>
                 </tr>
                 <tr>

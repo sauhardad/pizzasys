@@ -8,6 +8,8 @@ class Payment extends CI_Controller{
        
     function index(){
         $this->load->view('payment_view');
+        echo "routed login";
+        $this->session->unset_userdata('routed_login');
     }
     
     function payment_type(){

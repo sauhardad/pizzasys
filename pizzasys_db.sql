@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 12, 2015 at 01:09 AM
+-- Generation Time: Sep 16, 2015 at 07:42 AM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `pizzasys_db`
 --
+CREATE DATABASE IF NOT EXISTS `pizzasys_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+USE `pizzasys_db`;
 
 -- --------------------------------------------------------
 
@@ -26,6 +28,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `ci_sessions`
 --
 
+DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(45) NOT NULL DEFAULT '0',
@@ -41,7 +44,8 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('57cd8910a27455be6d8ebcf078c1892d', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36', 1442012953, 'a:2:{s:13:"ses_back_jobs";s:19:"order/confirm_order";s:13:"confirm_order";s:48:"http://localhost/pizzasys/order/order_validation";}');
+('966f3ecb0c5106c7be491b0182970443', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:36.0) Gecko/20100101 Firefox/36.0', 1442381824, 'a:1:{s:9:"logged_in";a:2:{s:2:"id";s:1:"1";s:5:"email";s:19:"sauhardad@gmail.com";}}'),
+('bc13af72f71e5bf790f8d21968ab828a', '127.0.0.1', 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1442381174, 'a:2:{s:9:"user_data";s:0:"";s:11:"data_values";a:5:{s:8:"size_val";s:1:"2";s:9:"crust_val";s:1:"4";s:9:"sauce_val";s:1:"1";s:10:"cheese_val";s:1:"2";s:16:"toppings_arr_val";a:2:{i:0;s:1:"2";i:1;s:1:"3";}}}');
 
 -- --------------------------------------------------------
 
@@ -49,6 +53,7 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 -- Table structure for table `tbl_cheese`
 --
 
+DROP TABLE IF EXISTS `tbl_cheese`;
 CREATE TABLE IF NOT EXISTS `tbl_cheese` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -73,6 +78,7 @@ INSERT INTO `tbl_cheese` (`id`, `name`) VALUES
 -- Table structure for table `tbl_crust`
 --
 
+DROP TABLE IF EXISTS `tbl_crust`;
 CREATE TABLE IF NOT EXISTS `tbl_crust` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -98,6 +104,7 @@ INSERT INTO `tbl_crust` (`id`, `name`) VALUES
 -- Table structure for table `tbl_order`
 --
 
+DROP TABLE IF EXISTS `tbl_order`;
 CREATE TABLE IF NOT EXISTS `tbl_order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `size` int(1) NOT NULL,
@@ -122,6 +129,7 @@ INSERT INTO `tbl_order` (`order_id`, `size`, `crush`, `sauce`, `cheese`, `toppin
 -- Table structure for table `tbl_sauce`
 --
 
+DROP TABLE IF EXISTS `tbl_sauce`;
 CREATE TABLE IF NOT EXISTS `tbl_sauce` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -149,6 +157,7 @@ INSERT INTO `tbl_sauce` (`id`, `name`) VALUES
 -- Table structure for table `tbl_toppings`
 --
 
+DROP TABLE IF EXISTS `tbl_toppings`;
 CREATE TABLE IF NOT EXISTS `tbl_toppings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -173,49 +182,31 @@ INSERT INTO `tbl_toppings` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tbl_user`
---
-
-CREATE TABLE IF NOT EXISTS `tbl_user` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `security_question` varchar(255) DEFAULT NULL,
-  `security_answer` varchar(255) DEFAULT NULL,
-  `active` tinyint(1) DEFAULT NULL,
-  `entry_date` datetime DEFAULT NULL,
-  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
-
---
--- Dumping data for table `tbl_user`
---
-
-INSERT INTO `tbl_user` (`user_id`, `email`, `password`, `security_question`, `security_answer`, `active`, `entry_date`, `last_login`) VALUES
-(1, 'a@gmail.com', '123', 'A', 'B', 1, '2015-09-10 17:08:42', '2015-09-10 21:08:42');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tbl_users`
 --
 
+DROP TABLE IF EXISTS `tbl_users`;
 CREATE TABLE IF NOT EXISTS `tbl_users` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `Address` varchar(255) NOT NULL,
+  `contact_no` double NOT NULL,
+  `security question` varchar(255) NOT NULL,
+  `security answer` varchar(255) NOT NULL,
   `last_login` datetime NOT NULL,
   `entry_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `email`, `password`, `last_login`, `entry_timestamp`) VALUES
-(1, 'sauhardad@gmail.com', '$2a$08$FqOeZeD0779QpjUFGeglOe9cO5o2GeL21fL4z/i0FmJTDqV4GkN3.', '2015-09-11 01:26:44', '2015-09-11 05:26:44');
+INSERT INTO `tbl_users` (`id`, `name`, `email`, `password`, `Address`, `contact_no`, `security question`, `security answer`, `last_login`, `entry_timestamp`) VALUES
+(1, '', 'sauhardad@gmail.com', '$2a$08$FqOeZeD0779QpjUFGeglOe9cO5o2GeL21fL4z/i0FmJTDqV4GkN3.', '', 0, '', '', '2015-09-16 11:15:54', '2015-09-16 05:30:54'),
+(2, 'Nirdosh Bista', 'nirdosh@gmail.com', '$2a$08$LsgIk19.025/LLvWt.P6HeWSu.AbnovaJMdahYJQsPXO/3ETUue8i', 'Lokanthali', 0, '', '', '0000-00-00 00:00:00', '2015-09-16 02:10:10');
 
 -- --------------------------------------------------------
 
@@ -223,6 +214,7 @@ INSERT INTO `tbl_users` (`id`, `email`, `password`, `last_login`, `entry_timesta
 -- Table structure for table `tbl_user_order`
 --
 
+DROP TABLE IF EXISTS `tbl_user_order`;
 CREATE TABLE IF NOT EXISTS `tbl_user_order` (
   `user_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,
@@ -240,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `tbl_user_order` (
 -- Constraints for table `tbl_user_order`
 --
 ALTER TABLE `tbl_user_order`
-  ADD CONSTRAINT `tbl_user_order_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`),
+  ADD CONSTRAINT `tbl_user_order_ibfk_3` FOREIGN KEY (`user_id`) REFERENCES `tbl_users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `tbl_user_order_ibfk_2` FOREIGN KEY (`order_id`) REFERENCES `tbl_order` (`order_id`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

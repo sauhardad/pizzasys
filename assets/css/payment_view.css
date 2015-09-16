@@ -34,3 +34,9 @@ margin-bottom:-10px
 .tg .tg-0ord{
     text-align:right
 }
+
+.plus_minus{
+    height: 25px;
+    border-radius: 15px;
+    cursor: pointer;
+}

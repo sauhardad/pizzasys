@@ -73,8 +73,14 @@ class User extends CI_Controller {
    }
    else
    {
-     //redirect to the home page
-     redirect('home', 'refresh');
+     $routed_login = $this->session->userdata('routed_login');
+     if(isset($routed_login) && $routed_login != ""){
+        $this->session->unset_userdata('routed_login');
+        $this->load->view($routed_login);
+     } else{
+       //redirect to the home page
+       redirect('home', 'refresh');
+     }
    }
 
  }

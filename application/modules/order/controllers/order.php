@@ -31,6 +31,7 @@ class Order extends CI_Controller{
         $cheese = $this->input->post('cheese');
         $toppings_arr = $this->input->post('toppings');
         
+        /* This array contains actual value like 1, 2, 3 ... or 123 */
         $data_values = array(
             'size_val' => $size,
             'crust_val' => $crust,
@@ -39,6 +40,7 @@ class Order extends CI_Controller{
             'toppings_arr_val' => $toppings_arr
         );
         
+        /* fetching the topping name list from database */
         $toppings_name = array();
         if($toppings_arr != NULL){
             foreach ($toppings_arr as $val){
@@ -46,6 +48,7 @@ class Order extends CI_Controller{
             }
         }
         
+        /* This array contains the name list of size, crust, ... fetched from database */
         $data = array(
             'size' => $this->get_name_by_size($size),
             'crust' => $this->order_model->get_crust_name($crust),
@@ -74,9 +77,6 @@ class Order extends CI_Controller{
             $this->session->set_userdata('data_values', $data_values);
             $this->load->view('order_confirm_view', $data);
         }
-        
-    //    foreach ($order["toppings"] as $value)
-      //      echo $value;
     }
     
     function size_validate($size)
@@ -133,12 +133,20 @@ class Order extends CI_Controller{
     function confirm_order(){
         $op_type =  $this->input->post('submit');
         if($op_type == "Confirm"){
-            //$data_values = $this->session->userdata('data_values');
-            $this->load->view('payment/payment_view');
-        }else if($op_type == "Edit Order2"){
+            
+            $logged_in = $this->session->userdata('logged_in');
+            
+            if(isset($logged_in) & $logged_in != ""){
+                $this->load->view('payment/payment_view');
+            }else {
+                $this->session->set_userdata('routed_login', "payment/payment_view");
+                $this->load->view('user/login_view');
+            }
+
+        }else if($op_type == "Edit Order"){
             $data = $this->load_pizza_data();
-            $data_values = $this->session->userdata('data_values');
             $this->load->view('order_view', $data);
+        
         }else {
             $this->session->unset_userdata('data_values');
             echo "cancelled!";

@@ -4,11 +4,9 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/opt/lampp/htdocs/pizzasys/assets/js/home_view.js</file>
-            <file>file:/opt/lampp/htdocs/pizzasys/application/modules/landing/views/landing_view.php</file>
-            <file>file:/opt/lampp/htdocs/pizzasys/application/modules/home/controllers/home.php</file>
-            <file>file:/opt/lampp/htdocs/pizzasys/assets/css/home_view.css</file>
-            <file>file:/opt/lampp/htdocs/pizzasys/application/modules/landing/controllers/landing.php</file>
-            <file>file:/opt/lampp/htdocs/pizzasys/application/views/common_header_view.php</file>
+            <file>file:/opt/lampp/htdocs/pizzasys/application/modules/user/views/login_view.php</file>
+            <file>file:/opt/lampp/htdocs/pizzasys/application/modules/user/controllers/user.php</file>
+            <file>file:/opt/lampp/htdocs/pizzasys/application/modules/user/models/user_model.php</file>
         </group>
     </open-files>
 </project-private>

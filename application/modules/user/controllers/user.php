@@ -203,18 +203,26 @@ class User extends CI_Controller {
         {
             if(($result=$this->user_model->verifySecurityAnswer($email,$answer)))
             {
-                  $sess_array = array();
-                  $sess_array = array(
-                     'id' => $result->id,
-                     'email' => $result->email,
-                   );       
-                   $this->session->set_userdata('logged_in', $sess_array);
-                   echo json_encode(array('status'=>TRUE));
+                $temp_pass=$this->randomString(10);
+                if($this->user_model->change_password($email,$temp_pass, TRUE))
+                    echo json_encode(array('status'=>TRUE,'temp_pass'=>$temp_pass));
             }        
             else
                 echo json_encode(array('status'=>FALSE,'message'=>'Oops! wrong answer'));
         }
         
+    }
+    
+    function randomString($length = 6) 
+    {
+        $str = "";
+        $characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
+        $max = count($characters)- 1;
+        for ($i = 0; $i < $length; $i++) {
+            $rand = mt_rand(0, $max);
+            $str .= $characters[$rand];
+        }
+        return $str;
     }
 
 }

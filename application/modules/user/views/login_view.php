@@ -98,7 +98,7 @@
     </div>
     </div>
 
-    <div class="modal fade" id="security_question_model" tabindex="-1" role="dialog" >
+    <div class="modal fade" id="security_question_modal" tabindex="-1" role="dialog" >
     <div class="modal-dialog">
         <div class="modal-content modal-content-bg">
             <div class="modal-header">
@@ -123,6 +123,28 @@
         </div>
     </div>
     </div>
+    
+    <div class="modal fade" id="temporary_password_modal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-bg">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div class="modal-title">Temporary Password</div>
+            </div>
+             <div class="row" style="padding: 7%;">
+                <div>
+                    <div class="form-login" style="padding:2%;">
+                            <label>Please use the temporary password to login and change your password within 24 hours</label>
+                            <input type="text" id="temporary_password" style="margin:1%;" class="form-control input-lg chat-input" readonly/>
+                            </br>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
     
     
     </section>

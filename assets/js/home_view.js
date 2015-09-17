@@ -166,7 +166,7 @@ function getsecurityParams()
             {
                 $('#security_question').val(data.security.security_question);
                 $('#forgot_password_modal').modal('hide');
-                $('#security_question_model').modal('show');
+                $('#security_question_modal').modal('show');
             }   
             else{
                 alert(data.message);
@@ -186,7 +186,10 @@ function verifyAnswer()
         success:function(data) {
             if(data.status==true)
             {
-                alert('Successfully validated!')
+                $('#temporary_password').val(data.temp_pass);
+                $('#security_question_modal').modal('hide');
+                $('#temporary_password_modal').modal('show');
+                
             }   
             else
             {

@@ -4,6 +4,7 @@
    <title>Payment</title>
    <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
    <link href="<?=base_url()?>assets/css/payment_view.css" rel="stylesheet" type="text/css">
+   <link href="<?=base_url()?>assets/css/home_view.css" rel="stylesheet" type="text/css">
        
        
    <script src="<?=base_url()?>assets/js/jquery.min.js"></script>    
@@ -14,11 +15,11 @@
    <?php echo form_open('payment/bank_payment');?>
    <div id="payment_content" >
         <div id="form_content" >
-            <table class="tg">
+            <table class="table">
                 <tr>
                   <th class="tg-0ord">Payment Amount:</th>
                   <th class="tg-031e">
-                    <input type="text" name="payment_amount" value="$20.99" disabled="disabled">
+                    <input class="form-control width-auto" type="text" name="payment_amount" value="$20.99" disabled="disabled" class="form-control">
                   </th>
                 </tr>
                 <tr>
@@ -32,20 +33,20 @@
                 <tr>
                   <td class="tg-0ord">Routing Number:</td>
                   <td class="tg-031e">
-                    <input type="text" name="routing_number" value="<?php echo set_value('routing_number'); ?>">
+                    <input class="form-control width-auto" type="text"  class="form-control" name="routing_number" value="<?php echo set_value('routing_number'); ?>">
                     <?php echo form_error('routing_number'); ?>
                   </td>                  
                 </tr>
                 <tr>
                   <td class="tg-0ord">Account Number:</td>
                   <td class="tg-031e">
-                    <input type="text" name="account_number" value="<?php echo set_value('account_number'); ?>">
+                    <input class="form-control width-auto" type="text" name="account_number"  class="form-control" value="<?php echo set_value('account_number'); ?>">
                     <?php echo form_error('account_number'); ?>
                   </td>                  
                 </tr>
                 <tr>
                   <td class="tg-0ord"></td>
-                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm')?></td>
+                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm', "class='btn btn-primary'")?></td>
                 </tr>
             </table>
         </div>

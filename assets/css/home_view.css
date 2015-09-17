@@ -345,3 +345,6 @@ thead {
     color: #fff;
 }
 /** end of override */
+.width-auto{
+    width:auto !important;
+}

@@ -10,6 +10,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
+                <li><a href="<?php echo base_url('order'); ?>">Order</a></li>  
                 <li><a href="<?php echo base_url('user/login'); ?>">Login</a></li>
                 <li><a href="<?php echo base_url('user/signup'); ?>">Signup</a></li>
               </ul>

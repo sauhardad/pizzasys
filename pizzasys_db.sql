@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 16, 2015 at 07:42 AM
+-- Generation Time: Sep 17, 2015 at 10:23 PM
 -- Server version: 5.6.14
 -- PHP Version: 5.5.6
 
@@ -19,8 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `pizzasys_db`
 --
-CREATE DATABASE IF NOT EXISTS `pizzasys_db` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `pizzasys_db`;
 
 -- --------------------------------------------------------
 
@@ -28,7 +26,6 @@ USE `pizzasys_db`;
 -- Table structure for table `ci_sessions`
 --
 
-DROP TABLE IF EXISTS `ci_sessions`;
 CREATE TABLE IF NOT EXISTS `ci_sessions` (
   `session_id` varchar(40) NOT NULL DEFAULT '0',
   `ip_address` varchar(45) NOT NULL DEFAULT '0',
@@ -44,8 +41,7 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('966f3ecb0c5106c7be491b0182970443', '127.0.0.1', 'Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:36.0) Gecko/20100101 Firefox/36.0', 1442381824, 'a:1:{s:9:"logged_in";a:2:{s:2:"id";s:1:"1";s:5:"email";s:19:"sauhardad@gmail.com";}}'),
-('bc13af72f71e5bf790f8d21968ab828a', '127.0.0.1', 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36', 1442381174, 'a:2:{s:9:"user_data";s:0:"";s:11:"data_values";a:5:{s:8:"size_val";s:1:"2";s:9:"crust_val";s:1:"4";s:9:"sauce_val";s:1:"1";s:10:"cheese_val";s:1:"2";s:16:"toppings_arr_val";a:2:{i:0;s:1:"2";i:1;s:1:"3";}}}');
+('bd0ca0825d8a159661464cee16a55fc8', '127.0.0.1', 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.85 Safari/537.36', 1442521186, 'a:1:{s:9:"user_data";s:0:"";}');
 
 -- --------------------------------------------------------
 
@@ -53,7 +49,6 @@ INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activ
 -- Table structure for table `tbl_cheese`
 --
 
-DROP TABLE IF EXISTS `tbl_cheese`;
 CREATE TABLE IF NOT EXISTS `tbl_cheese` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -78,7 +73,6 @@ INSERT INTO `tbl_cheese` (`id`, `name`) VALUES
 -- Table structure for table `tbl_crust`
 --
 
-DROP TABLE IF EXISTS `tbl_crust`;
 CREATE TABLE IF NOT EXISTS `tbl_crust` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -104,7 +98,6 @@ INSERT INTO `tbl_crust` (`id`, `name`) VALUES
 -- Table structure for table `tbl_order`
 --
 
-DROP TABLE IF EXISTS `tbl_order`;
 CREATE TABLE IF NOT EXISTS `tbl_order` (
   `order_id` int(11) NOT NULL AUTO_INCREMENT,
   `size` int(1) NOT NULL,
@@ -114,14 +107,17 @@ CREATE TABLE IF NOT EXISTS `tbl_order` (
   `topping` varchar(255) NOT NULL,
   `order_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`order_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_order`
 --
 
 INSERT INTO `tbl_order` (`order_id`, `size`, `crush`, `sauce`, `cheese`, `topping`, `order_time`) VALUES
-(1, 2, 1, 3, 2, 'topping', '2015-09-10 21:08:42');
+(1, 2, 1, 3, 2, 'topping', '2015-09-10 21:08:42'),
+(2, 3, 5, 3, 4, '13', '2015-09-17 19:37:18'),
+(3, 2, 2, 3, 4, '23', '2015-09-17 19:50:04'),
+(4, 1, 3, 4, 4, '13', '2015-09-17 19:53:59');
 
 -- --------------------------------------------------------
 
@@ -129,7 +125,6 @@ INSERT INTO `tbl_order` (`order_id`, `size`, `crush`, `sauce`, `cheese`, `toppin
 -- Table structure for table `tbl_sauce`
 --
 
-DROP TABLE IF EXISTS `tbl_sauce`;
 CREATE TABLE IF NOT EXISTS `tbl_sauce` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -157,7 +152,6 @@ INSERT INTO `tbl_sauce` (`id`, `name`) VALUES
 -- Table structure for table `tbl_toppings`
 --
 
-DROP TABLE IF EXISTS `tbl_toppings`;
 CREATE TABLE IF NOT EXISTS `tbl_toppings` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -182,10 +176,34 @@ INSERT INTO `tbl_toppings` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tbl_user`
+--
+
+CREATE TABLE IF NOT EXISTS `tbl_user` (
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `security_question` varchar(255) DEFAULT NULL,
+  `security_answer` varchar(255) DEFAULT NULL,
+  `active` tinyint(1) DEFAULT NULL,
+  `entry_date` datetime DEFAULT NULL,
+  `last_login` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `tbl_user`
+--
+
+INSERT INTO `tbl_user` (`user_id`, `email`, `password`, `security_question`, `security_answer`, `active`, `entry_date`, `last_login`) VALUES
+(1, 'a@gmail.com', '123', 'A', 'B', 1, '2015-09-10 17:08:42', '2015-09-10 21:08:42');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_users`
 --
 
-DROP TABLE IF EXISTS `tbl_users`;
 CREATE TABLE IF NOT EXISTS `tbl_users` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) NOT NULL,
@@ -193,20 +211,21 @@ CREATE TABLE IF NOT EXISTS `tbl_users` (
   `password` varchar(255) NOT NULL,
   `Address` varchar(255) NOT NULL,
   `contact_no` double NOT NULL,
-  `security question` varchar(255) NOT NULL,
-  `security answer` varchar(255) NOT NULL,
+  `security_question` varchar(255) NOT NULL,
+  `security_answer` varchar(255) NOT NULL,
   `last_login` datetime NOT NULL,
   `entry_timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Dumping data for table `tbl_users`
 --
 
-INSERT INTO `tbl_users` (`id`, `name`, `email`, `password`, `Address`, `contact_no`, `security question`, `security answer`, `last_login`, `entry_timestamp`) VALUES
-(1, '', 'sauhardad@gmail.com', '$2a$08$FqOeZeD0779QpjUFGeglOe9cO5o2GeL21fL4z/i0FmJTDqV4GkN3.', '', 0, '', '', '2015-09-16 11:15:54', '2015-09-16 05:30:54'),
-(2, 'Nirdosh Bista', 'nirdosh@gmail.com', '$2a$08$LsgIk19.025/LLvWt.P6HeWSu.AbnovaJMdahYJQsPXO/3ETUue8i', 'Lokanthali', 0, '', '', '0000-00-00 00:00:00', '2015-09-16 02:10:10');
+INSERT INTO `tbl_users` (`id`, `name`, `email`, `password`, `Address`, `contact_no`, `security_question`, `security_answer`, `last_login`, `entry_timestamp`) VALUES
+(1, '', 'sauhardad@gmail.com', '$2a$08$FqOeZeD0779QpjUFGeglOe9cO5o2GeL21fL4z/i0FmJTDqV4GkN3.', '', 0, '', '', '2015-09-17 15:34:58', '2015-09-17 19:34:58'),
+(2, 'Nirdosh Bista', 'nirdosh@gmail.com', '$2a$08$LsgIk19.025/LLvWt.P6HeWSu.AbnovaJMdahYJQsPXO/3ETUue8i', 'Lokanthali', 0, '', '', '0000-00-00 00:00:00', '2015-09-16 02:10:10'),
+(4, 'Md Salman Ahmed', 'salman0yam@gmail.com', '$2a$08$FE.g2VoTbS0bSwAV0JAT/OKrwGDnoaKp9PkaP7TiZKJvJxY3rtmi2', '811, Magnolia', 4237731454, 'What is your name?', 'salman', '2015-09-17 15:56:38', '2015-09-17 19:56:38');
 
 -- --------------------------------------------------------
 
@@ -214,7 +233,6 @@ INSERT INTO `tbl_users` (`id`, `name`, `email`, `password`, `Address`, `contact_
 -- Table structure for table `tbl_user_order`
 --
 
-DROP TABLE IF EXISTS `tbl_user_order`;
 CREATE TABLE IF NOT EXISTS `tbl_user_order` (
   `user_id` int(11) NOT NULL,
   `order_id` int(11) NOT NULL,

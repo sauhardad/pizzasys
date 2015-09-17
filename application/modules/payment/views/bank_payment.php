@@ -14,13 +14,14 @@
    
    <?php echo form_open('payment/bank_payment');?>
    <div id="payment_content" >
+    <h1>Please provide bank account information</h1>
         <div id="form_content" >
             <table class="table">
                 <tr>
                   <th class="tg-0ord">Payment Amount:</th>
                   <th class="tg-031e">
-                    <input class="form-control width-auto" type="text" name="payment_amount" value="$20.99" disabled="disabled" class="form-control">
-                  </th>
+                    <input class="form-control width-auto" type="text" name="payment_amount" value="<?php echo $this->session->userdata('payment_amount'); ?>" class="form-control" readonly>
+                 </th>
                 </tr>
                 <tr>
                   <td class="tg-0ord">Select Account:</td>

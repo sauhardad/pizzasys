@@ -4,6 +4,7 @@ class Payment extends CI_Controller{
     
     function __construct(){
         parent::__construct();
+        $this->load->model('payment_model');
     }
        
     function index(){
@@ -13,8 +14,9 @@ class Payment extends CI_Controller{
     }
     
     function payment_type(){
+        $payment_amount = $this->input->post('payment_amount');
         $payment_method = $this->input->post('payment_method');
-        
+
         $this->load->library('form_validation');
         $this->form_validation->set_error_delimiters('<div class="error">', '</div>');
         $this->form_validation->set_rules('payment_method', 'Payment Method', 'callback_method_validate');
@@ -24,6 +26,8 @@ class Payment extends CI_Controller{
             $this->load->view('payment_view');
         }
         else{
+            
+            $this->session->set_userdata('payment_amount', $payment_amount);
             if($payment_method == "debit_card" || $payment_method == "credit_card"){
                 $this->load->view('card_payment');
             }else {
@@ -62,6 +66,11 @@ class Payment extends CI_Controller{
             $this->load->view('card_payment');
         }
         else{
+            
+            /*Inserting order information to database*/
+            $this->payment_model->insert_order($this->session->userdata('data_values'));
+            $this->session->unset_userdata('data_values');
+            $this->session->unset_userdata('payment_amount');
             $this->load->view('thank_you');
         }
     }
@@ -129,6 +138,10 @@ class Payment extends CI_Controller{
             $this->load->view('bank_payment');
         }
         else{
+            /*Inserting order information to database*/
+            $this->payment_model->insert_order($this->session->userdata('data_values'));
+            $this->session->unset_userdata('data_values');
+            $this->session->unset_userdata('payment_amount');
             $this->load->view('thank_you');
         }
     }

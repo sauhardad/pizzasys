@@ -10,7 +10,11 @@
  
  <body> 
    <div id="thank_you" >
-        <h1>Thank you very much!</h1>
+        <h1 style="text-align: center;">Thank you very much for you business with us!</h1>
+        <div style="text-align: center;">
+         <a href="<?php echo base_url('order'); ?>">Order Again</a>
+         <a href="<?php echo base_url('home'); ?>">Redirect to Home</a>
+        </div>
    </div>  
  </body>
 </html>

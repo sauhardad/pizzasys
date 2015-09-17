@@ -13,24 +13,28 @@
  </head>
  <body>
    
-   <?php echo form_open('payment/payment_type');?>
+   
    <div id="payment_content" >
+        <?php echo form_open('payment/payment_type');?>
         <div id="form_content" >
             <table class="table">
+                  <?php
+                       $value = 6.99 + (2 * ($this->session->userdata('data_values')['size_val']) - 1);
+                    ?>
                 <tr>
                   <th class="tg-0ord">Quantity:</th>
                   <th class="tg-031e">
                     <input class="form-control width-auto" style="float:left;" type="text" id="quantity" value="1" size=3 style="text-align: center;" >
                     <div style="float:left;margin-left:2%;">
-                        <img src="<?php echo base_url('assets/img/plus.png'); ?>" id="plus" class="plus_minus" onclick="plus_clicked()">
-                        <img src="<?php echo base_url('assets/img/minus.png'); ?>" id="minus" class="plus_minus" onclick="minus_clicked()">
+                        <img src="<?php echo base_url('assets/img/plus.png'); ?>" id="plus" class="plus_minus" onclick="plus_clicked('<?php echo $value; ?>')">
+                        <img src="<?php echo base_url('assets/img/minus.png'); ?>" id="minus" class="plus_minus" onclick="minus_clicked('<?php echo $value; ?>')">
                     </div>            
-                  </th>
+                 </th>
                 </tr>
                 <tr>
                   <th class="tg-0ord">Payment Amount:</th>
                   <th class="tg-031e">
-                    <input type="text" id="payment_amount" class="form-control width-auto" value="$7.99" disabled="disabled">
+                    <input type="text" id="payment_amount" name="payment_amount" class="form-control width-auto" value="<?php echo "$".$value; ?>" readonly>
                   </th>
                 </tr>
                 <tr>
@@ -54,8 +58,9 @@
                 </tr>
             </table>
         </div>
+        <?php echo form_close(); ?>
    </div>
-   <?php echo form_close(); ?>
+   
    
  </body>
 </html>

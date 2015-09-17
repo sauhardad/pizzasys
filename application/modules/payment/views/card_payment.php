@@ -80,7 +80,7 @@
                 </tr>
                 <tr>
                   <td class="tg-0ord"></td>
-                  <td class="tg-031e"> <?php echo form_submit('submit','Proceed','class="btn btn-primary"')?></td>
+                  <td class="tg-031e"> <?php echo form_submit('submit','Confirm','class="btn btn-primary"')?></td>
                 </tr>
             </table>
         </div>

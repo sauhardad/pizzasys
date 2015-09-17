@@ -149,7 +149,16 @@ class Order extends CI_Controller{
         
         }else {
             $this->session->unset_userdata('data_values');
-            echo "cancelled!";
+            $logged_in = $this->session->userdata('logged_in');
+            $url = "";
+            if(isset($logged_in) & $logged_in != "")
+                $url = base_url()."home";
+            else
+                $url = base_url()."landing";
+
+            echo "<script>alert('Your order has been cancelled!');window.location.href='".$url."';</script>";
+ 
+            
         }
     }
     /* End confirmation order here*/

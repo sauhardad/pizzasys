@@ -5,7 +5,7 @@
    <link href="<?=base_url()?>assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
    <link href="<?=base_url()?>assets/css/login_view.css" rel="stylesheet" type="text/css">
        
-       
+   <script>var base_url='<?php echo base_url(); ?>';</script>    
    <script src="<?=base_url()?>assets/js/jquery.min.js"></script>    
    <script src="<?=base_url()?>assets/js/bootstrap.min.js"></script>    
    <script src="<?=base_url()?>assets/js/home_view.js"></script>    
@@ -54,6 +54,32 @@
              <div class="row" style="padding: 7%;">
                 <div>
                     <div class="form-login">
+                            <h4</h4>
+                            <input type="text" id="recovery_email" name="recovery_email" class="form-control input-lg chat-input" placeholder="Email" />
+                            </br>
+                            <div class="wrapper">
+                                <span class="group-btn">     
+                                    <input type="button" class="btn btn-custom btn-md" value="Recover" onclick="getsecurityParams();"/>
+                                </span>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    
+    <div class="modal fade" id="forgot_password_modal" tabindex="-1" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-bg">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div class="modal-title">Please enter your email address for password recovery</div>
+            </div>
+             <div class="row" style="padding: 7%;">
+                <div>
+                    <div class="form-login">
                         <form id="frm_forgot_password" method="post" action="<?=base_url('user/forgot_password')?>">
                             <h4</h4>
                             <input type="text" id="recovery_email" name="recovery_email" class="form-control input-lg chat-input" placeholder="Email" />
@@ -70,7 +96,33 @@
             </div>
         </div>
     </div>
-</div>
+    </div>
+
+    <div class="modal fade" id="security_question_model" tabindex="-1" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content modal-content-bg">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <div class="modal-title">Please enter your answer</div>
+            </div>
+             <div class="row" style="padding: 7%;">
+                <div>
+                    <div class="form-login" style="padding:2%;">
+                            <input type="text" id="security_question" name="security_question" style="margin:1%;" class="form-control input-lg chat-input" disabled/>
+                            <input type="password" id="security_answer" name="security_answer" style="margin:1%;" class="form-control input-lg chat-input" placeholder="Answer" />
+                            </br>
+                            <div class="wrapper">
+                                <span class="group-btn">     
+                                    <input type="submit" id="recover_password" class="btn btn-custom btn-md" value="Recover" onclick="verifyAnswer();"/>
+                                </span>
+                            </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
     
     
     </section>

@@ -54,6 +54,28 @@ Class User_model extends CI_Model
      return $result;
  }
  
+ function get_user_security($email)
+ {
+     $this->db->select('security_question');
+     $this->db->from('tbl_users');
+     $this->db->where('email',$email);
+     $query = $this -> db -> get();
+     $result=$query->row();
+     return $result;
+ }
+ 
+ function verifySecurityAnswer($email, $answer)
+ {
+     $this->db->select('id,email');
+     $this->db->from('tbl_users');
+     $this->db->where('email',$email);
+     $this->db->where('security_answer',$answer);
+     $query = $this -> db -> get();
+     if($query->row())
+        return $query->row();
+     return FALSE;
+ }
+ 
  /** function that removes user from the database when uer_id is passed
   * 
   * @param type $id

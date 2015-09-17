@@ -38,6 +38,8 @@ class User extends CI_Controller {
     $this->form_validation->set_rules('name', 'Name', 'trim|required|xss_clean');
     $this->form_validation->set_rules('address', 'Address', 'trim|xss_clean');
     $this->form_validation->set_rules('contact_no', 'Phone Number', 'trim|xss_clean|numeric|exact_length[10]');
+    $this->form_validation->set_rules('security_question', 'Security Question', 'trim|required|xss_clean');
+    $this->form_validation->set_rules('security_answer', 'Security Answer', 'trim|required|xss_clean');
     $this->form_validation->set_rules('email', 'Email', 'trim|required|xss_clean|valid_email|is_unique[tbl_users.email]');
     $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean|matches[confirm_password]|min_length[6]');
     $this->form_validation->set_rules('confirm_password', 'Confirm Password', 'trim|required|xss_clean');
@@ -54,6 +56,8 @@ class User extends CI_Controller {
         $data['name']=$this->input->post('name');
         $data['address']=$this->input->post('address');
         $data['email']=$this->input->post('email'); 
+        $data['security_question']=$this->input->post('security_question'); 
+        $data['security_answer']=$this->input->post('security_answer'); 
         $data['contact_no']=$this->input->post('contact_no'); 
         $data['password']=$this->bcrypt->hash_password($this->input->post('password'));
         if ($this->user_model->add_user($data))
@@ -178,6 +182,39 @@ class User extends CI_Controller {
                 echo $this->email->print_debugger();    
             }
         }
+    }
+    
+    function getSecurityParams()
+    {
+        if(($email=$this->input->post('email')))
+        {
+            $details=$this->user_model->get_user_security($email);
+            if(!empty($details))
+                echo json_encode(array('status'=>TRUE,'security'=>$details));
+            else
+                echo json_encode(array('status'=>FALSE,'message'=>'Incorrect email address!'));
+        }
+        
+    }
+    
+    function verifyAnswer()
+    {
+        if(($answer=$this->input->post('answer')) && ($email=$this->input->post('email')))
+        {
+            if(($result=$this->user_model->verifySecurityAnswer($email,$answer)))
+            {
+                  $sess_array = array();
+                  $sess_array = array(
+                     'id' => $result->id,
+                     'email' => $result->email,
+                   );       
+                   $this->session->set_userdata('logged_in', $sess_array);
+                   echo json_encode(array('status'=>TRUE));
+            }        
+            else
+                echo json_encode(array('status'=>FALSE,'message'=>'Oops! wrong answer'));
+        }
+        
     }
 
 }

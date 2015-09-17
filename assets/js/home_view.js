@@ -82,35 +82,7 @@ $(function () {
         }
     });
     
-    //validate passwords when user wants to cancel an account
-    $("#frm_forgot_password").validate({
-        rules: {
-                recovery_email: {
-                        required: true
-                }
-        },
-        messages: {
-                recovery_email: {
-                        required: "Please enter your email address"
-                }
-        },
-        errorClass: "invalid",
-        submitHandler: function(form) {
-            $(form).ajaxSubmit({
-                clearForm:true,
-                dataType:'json',
-                success: function(data) {
-                    alert(data.message);
-                    if(data.status==true)
-                    {
-                        alert("Email Successfully sent!");
-                        window.location=window.location
-                    }
-                }
-            });
-            return false;
-        }
-    });
+    
     
     
     //validate the add new user form with custom and built in validation
@@ -175,6 +147,52 @@ function deleteUser(anchor,user_id)
         success:function(data) {
             if(data.status==true)
                 $(anchor).parent().parent().remove();
+        }       
+      });
+}
+
+/** function that checks user's email and retrieves the security question and answer
+ * 
+ */
+function getsecurityParams()
+{
+    $.ajax({
+        type: "POST",
+        url: base_url+'user/getsecurityParams',
+        data: {email : $('#recovery_email').val()},
+        dataType: 'json',
+        success:function(data) {
+            if(data.status==true)
+            {
+                $('#security_question').val(data.security.security_question);
+                $('#forgot_password_modal').modal('hide');
+                $('#security_question_model').modal('show');
+            }   
+            else{
+                alert(data.message);
+            }
+        }       
+      });
+}
+
+
+function verifyAnswer()
+{
+    $.ajax({
+        type: "POST",
+        url: base_url+'user/verifyAnswer',
+        data: {answer : $('#security_answer').val(), email: $('#recovery_email').val()},
+        dataType: 'json',
+        success:function(data) {
+            if(data.status==true)
+            {
+                alert('Successfully validated!')
+            }   
+            else
+            {
+                alert(data.message);
+                    window.location=window.location.href;
+            }
         }       
       });
 }

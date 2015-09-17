@@ -33,6 +33,14 @@
                             <input type="text" name="contact_no" id="contact_no" class="form-control" placeholder="Phone Number" value="<?php echo set_value('contact_no'); ?>">
                         </div>
                         <div class="form-group">
+                            <label for="security_question" class="sr-only">Security Question:</label>
+                            <input type="text" name="security_question" id="security_question" class="form-control" placeholder="Security Question" value="<?php echo set_value('security_question'); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label for="security_answer" class="sr-only">Security Answer:</label>
+                            <input type="password" name="security_answer" id="security_answer" class="form-control" placeholder="Security Answer" value="<?php echo set_value('security_answer'); ?>">
+                        </div>
+                        <div class="form-group">
                             <label for="email" class="sr-only">Email:</label>
                             <input type="text" name="email" id="email" class="form-control" placeholder="Email" value="<?php echo set_value('email'); ?>">
                         </div>
